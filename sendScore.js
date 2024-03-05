@@ -1,19 +1,29 @@
 function sendScore(spreadsheet, name, id, message_id = null) {
     const tableScore = spreadsheet.getSheetByName(scoreSheet).getRange("A1:P700").getValues();
     let score;
+    let nameIndex;
     const marks = [];
-    score = extractValue(tableScore, name, 1);
-    if (score == null) {
-        score = extractValue(tableScore, name, 2);
-        if (score == null) {
+    if (name.split(" ").length === 2) {
+        nameIndex = 1;
+    } else {
+        nameIndex = 2;
+    }
+    score = extractValue(tableScore, name, nameIndex);
+    if (score === null) {
+        score = extractValue(tableScore, name, nameIndex);
+        if (score === null) {
             if (message_id == null) {
                 sendMessage(id, registrationNotFound);
+                return;
             } else {
                 sendMessage(id, personNotFound, message_id);
+                return;
             }
         }
     }
 
+    const splitName = name.split(" ");
+    name = splitName[0] + " " + splitName[1];
     //TO refactor at all
     if (score[0] === "y2023") {
         for (i = 0; i < 7; i++) {
@@ -49,7 +59,7 @@ function sendScore(spreadsheet, name, id, message_id = null) {
         } else {
             sendMessage(id, message, message_id);
         }
-        return
+        return;
     }
     if (score[0] === "y2022") {
         for (var i = 0; i < 8; i++) {

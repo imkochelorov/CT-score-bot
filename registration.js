@@ -5,11 +5,17 @@ function getRegistrationById(spreadsheet, id) {
 }
 
 function greetUnregistered(spreadsheet, id, text, split) {
-    if (split.length !== 3) {
+    let nameIndex;
+    if (split.length === 2) {
+        nameIndex = 1;
+    } else if (split.length === 3) {
+        nameIndex = 2;
+    } else {
         sendMessage(id, greetMessage);
         return;
     }
-    if (extractValue(spreadsheet.getSheetByName(scoreSheet).getRange("A2:B700").getValues(), text, 2) === null) {
+
+    if (extractValue(spreadsheet.getSheetByName(scoreSheet).getRange("A2:C700").getValues(), text, nameIndex) === null) {
         sendMessage(id, greetMessage);
         return;
     }
@@ -21,12 +27,12 @@ function register(spreadsheet, id, name) {
     spreadsheet.getSheetByName(registrationsSheet).getRange("A" + registeredCount).setValue("=ROW(A" + registeredCount + ")");
     spreadsheet.getSheetByName(registrationsSheet).getRange("B" + registeredCount).setValue(id)
     spreadsheet.getSheetByName(registrationsSheet).getRange("C" + registeredCount).setValue(name);
-    sendMessage(id, successfullRegistrationMessage, messageId);
+    sendMessage(id, successfullRegistrationMessage);
     sendMessage(id, personalHelpMessage);
 }
 
-function unregister(spreadsheet, id) {
+function unregister(spreadsheet, senderId) {
     const index = getRegistrationById(spreadsheet, senderId)[0];
     spreadsheet.getSheetByName(registrationsSheet).deleteRow(index);
-    sendMessage(id, unregisterMessage);
+    sendMessage(senderId, unregisterMessage);
 }

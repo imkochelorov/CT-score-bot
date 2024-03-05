@@ -18,7 +18,7 @@ const unregisteredMessage = `
 К сожалению, вы не зарегистрированы!
 Вы можете зарегистрироваться, написав боту в личные сообщения
 `;
-const unregisterMessage = "Пожалуйста, зарегистрируйтесь снова, введя Фамилию и Имя, строго совпадающие с табличным";
+const unregisterMessage = "Пожалуйста, зарегистрируйтесь снова, введя ФИО, строго совпадающие с табличным";
 const greetMessage = "<b>Для начала работы с ботом введите своё ФИО, строго совпадающее с табличным</b>";
 const successfullRegistrationMessage = "Регистрация прошла успешно!";
 const wrongMessageType = "Неверный формат сообщения";
@@ -28,7 +28,7 @@ const groupHelpMessage = `
 ` + scoreCommand + telegramTag + `
 
 <b>Получить баллы человека по имени</b>
-` + scoreCommand + telegramTag + `<i>Фамилия Имя</i>
+` + scoreCommand + telegramTag + ` <i>Фамилия Имя</i>
 
 <b>Получить это сообщение</b>
 ` + helpCommand + telegramTag;
