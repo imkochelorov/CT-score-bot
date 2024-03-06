@@ -23,7 +23,7 @@ function sendScore(spreadsheet, name, id, message_id = null) {
     }
 
     const splitName = name.split(" ");
-    name = splitName[0] + " " + splitName[1];
+    name = splitName[0] + " " + splitName[1] + "\n" + yourScoreKal;
     //TO refactor at all
     if (score[0] === "y2023") {
         for (i = 0; i < 7; i++) {
@@ -136,3 +136,5 @@ function sendScore(spreadsheet, name, id, message_id = null) {
         }
     }
 }
+
+sendScore("a", 'a');
