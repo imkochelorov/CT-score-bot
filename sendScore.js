@@ -136,5 +136,3 @@ function sendScore(spreadsheet, name, id, message_id = null) {
         }
     }
 }
-
-sendScore("a", 'a');
