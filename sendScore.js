@@ -26,6 +26,31 @@ function sendScore(spreadsheet, name, id, message_id = null) {
     name = splitName[0] + " " + splitName[1];
     //TO refactor at all
     if (score[0] === "y2023") {
+
+
+        const tableScore = spreadsheet.getSheetByName(scoreSheetSecond).getRange("A1:P700").getValues();
+        let score;
+        let nameIndex;
+        const marks = [];
+        if (name.split(" ").length === 2) {
+            nameIndex = 1;
+        } else {
+            nameIndex = 2;
+        }
+        score = extractValue(tableScore, name, nameIndex);
+        if (score === null) {
+            score = extractValue(tableScore, name, nameIndex);
+            if (score === null) {
+                if (message_id == null) {
+                    sendMessage(id, registrationNotFound);
+                    return;
+                } else {
+                    sendMessage(id, personNotFound, message_id);
+                    return;
+                }
+            }
+        }
+
         for (i = 0; i < 7; i++) {
             score[i] = parseFloat(score[i + 4]);
             if (score[i] > 90) {
@@ -53,7 +78,7 @@ function sendScore(spreadsheet, name, id, message_id = null) {
                 score[i] = score[i] + " ";
             }
         }
-        var message = name + "\r\n" + "<pre>Calculus       ║ " + score[5] + " ║  " + marks[5] + " ║\r\n" + "Prog-intro     ║ " + score[1] + " ║  " + marks[1] + " ║\r\n" + "Discrete Math  ║ " + score[0] + " ║  " + marks[0] + " ║\r\n" + "A&DS           ║ " + score[2] + " ║  " + marks[2] + " ║\r\n" + "Linear Algebra ║ " + score[4] + " ║  " + marks[4] + " ║\r\n" + "Comp-arch      ║ " + score[3] + " ║  " + marks[3] + " ║\r\n" + "               ║        ║     ║\r\n" + "Average        ║ " + score[6] + " ║  " + marks[6] + " ║</pre>";
+        var message = name + "\r\n" + "<pre>Calculus       ║ " + score[5] + " ║  " + marks[5] + " ║\r\n" + "Paradigms      ║ " + score[1] + " ║  " + marks[1] + " ║\r\n" + "Discrete Math  ║ " + score[0] + " ║  " + marks[0] + " ║\r\n" + "A&DS           ║ " + score[2] + " ║  " + marks[2] + " ║\r\n" + "Linear Algebra ║ " + score[4] + " ║  " + marks[4] + " ║\r\n" + "C++            ║ " + score[3] + " ║  " + marks[3] + " ║\r\n" + "               ║        ║     ║\r\n" + "Average        ║ " + score[6] + " ║  " + marks[6] + " ║</pre>\r\n<i>Баллы по парадигмам программирования подлежат последующей конвертации</i>";
         if (message_id == null) {
             sendMessage(id, message);
         } else {
