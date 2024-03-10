@@ -9,6 +9,7 @@ const telegramTag = "@CT_score_bot";
 
 const beginCommand = "/start";
 const scoreCommand = "/score";
+const shameCommand = "/shame";
 const helpCommand = "/help";
 const unregisterCommand = "/unregister";
 
@@ -49,12 +50,22 @@ const personNotFound = `
 const registrationNotFound = `
 К сожалению, не удалось найти Ваши баллы
 Попробуйте перерегистрироваться, а если не поможет, напишите @imkochelorov`;
+const shameNotFound = `Не находится в папке позора`;
 
 const registrationsSheet = "bot_registrations"
 const scoreSheet = "score"
 const scoreSheetSecond = "score2"
 
+const shameSheet = "shame_folder"
+
+const shameCountCell = "F1"
 const registrationsCountCell = "D1"
+
+const personalScoreReplacement = []
+//hard-coded personal replacements
+
+const groupScoreReplacement = []
+//hard-coded personal replacements
 
 const yourScoreKal = `
 ............/´¯/)...............(\\¯\`\\...... ......
