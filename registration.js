@@ -6,9 +6,7 @@ function getRegistrationById(spreadsheet, id) {
 
 function greetUnregistered(spreadsheet, id, text, split) {
     let nameIndex;
-    if (split.length === 2) {
-        nameIndex = 1;
-    } else if (split.length === 3) {
+    if (split.length === 3) {
         nameIndex = 2;
     } else {
         sendMessage(id, greetMessage);

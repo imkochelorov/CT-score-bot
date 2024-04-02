@@ -1,5 +1,5 @@
 function sendScore(spreadsheet, name, id, message_id = null) {
-    const tableScore = spreadsheet.getSheetByName(scoreSheet).getRange("A1:P700").getValues();
+    let tableScore = spreadsheet.getSheetByName(scoreSheet).getRange("A1:P700").getValues();
     let score;
     let nameIndex;
     const marks = [];
@@ -10,6 +10,7 @@ function sendScore(spreadsheet, name, id, message_id = null) {
     }
     score = extractValue(tableScore, name, nameIndex);
     if (score === null) {
+        tableScore = spreadsheet.getSheetByName(scoreSheetSecond).getRange("A1:P700").getValues();
         score = extractValue(tableScore, name, nameIndex);
         if (score === null) {
             if (message_id == null) {
@@ -22,7 +23,7 @@ function sendScore(spreadsheet, name, id, message_id = null) {
         }
     }
 
-    const splitName = name.split(" ");
+    const splitName = score[1].split(" ");
     name = splitName[0] + " " + splitName[1];
     //TO refactor at all
     if (score[0] === "y2023") {

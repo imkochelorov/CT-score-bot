@@ -61,12 +61,6 @@ const shameSheet = "shame_folder"
 const shameCountCell = "F1"
 const registrationsCountCell = "D1"
 
-const personalScoreReplacement = []
-//hard-coded personal replacements
-
-const groupScoreReplacement = []
-//hard-coded personal replacements
-
 const yourScoreKal = `
 ............/´¯/)...............(\\¯\`\\...... ......
 .........../...//.............. .\\...\\............
