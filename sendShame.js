@@ -1,3 +1,5 @@
+//Unused anymore
+
 function sendShame(spreadsheet, name, id, message_id = null) {
     const shameData = spreadsheet.getSheetByName(shameSheet).getRange("A2:E700").getValues();
     let shame;

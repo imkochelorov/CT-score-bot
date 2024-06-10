@@ -29,7 +29,7 @@ function groupReply(message) {
             return;
         }
         if (text === shameCommand + telegramTag) {
-            sendShame(spreadsheet, name, chatId, message.message_id);
+            //sendShame(spreadsheet, name, chatId, message.message_id);
             return;
         }
     }
@@ -80,7 +80,7 @@ function privateReply(message) {
     if (text === scoreCommand) {
         sendScore(spreadsheet, name, senderId);
     } else if (text === shameCommand) {
-        sendShame(spreadsheet, name, senderId);
+        //sendShame(spreadsheet, name, senderId);
     } else if (split.length === 2) {
         addNotification(spreadsheet, senderId, name, split, message.message_id);
     } else {
