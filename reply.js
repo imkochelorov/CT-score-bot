@@ -10,7 +10,9 @@ function groupReply(message) {
         sendMessage(chatId, groupHelpMessage, message.message_id);
         return;
     }
+
     const spreadsheet = SpreadsheetApp.getActive();
+
     if (split.length === 1 && (text === scoreCommand + telegramTag || text === shameCommand + telegramTag)) {
         const registration = getRegistrationById(spreadsheet, senderId);
         if (registration === null) {
@@ -31,6 +33,7 @@ function groupReply(message) {
             return;
         }
     }
+
     let name = null;
     if (split.length === 3) {
         name = split[1] + " " + split[2];

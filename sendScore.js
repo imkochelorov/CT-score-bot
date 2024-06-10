@@ -1,5 +1,5 @@
 function sendScore(spreadsheet, name, id, message_id = null) {
-    const tableScore = spreadsheet.getSheetByName(scoreSheet).getRange("A1:P700").getValues();
+    let tableScore = spreadsheet.getSheetByName(scoreSheet).getRange("A1:P700").getValues();
     let score;
     let nameIndex;
     const marks = [];
@@ -10,24 +10,22 @@ function sendScore(spreadsheet, name, id, message_id = null) {
     }
     score = extractValue(tableScore, name, nameIndex);
     if (score === null) {
-        score = extractValue(tableScore, name, nameIndex);
-        if (score === null) {
-            if (message_id == null) {
-                sendMessage(id, registrationNotFound);
-                return;
-            } else {
-                sendMessage(id, personNotFound, message_id);
-                return;
-            }
+        //tableScore = spreadsheet.getSheetByName(scoreSheetSecond).getRange("A1:P700").getValues();
+        //score = extractValue(tableScore, name, nameIndex);
+        //if (score === null) {
+        if (message_id == null) {
+            sendMessage(id, registrationNotFound);
+        } else {
+            sendMessage(id, personNotFound, message_id);
         }
+        return;
     }
 
-    const splitName = name.split(" ");
+    const splitName = score[1].split(" ");
     name = splitName[0] + " " + splitName[1];
-    //TO refactor at all
+//TO refactor at all
     if (score[0] === "y2023") {
-
-
+        /*
         const tableScore = spreadsheet.getSheetByName(scoreSheetSecond).getRange("A1:P700").getValues();
         let score;
         let nameIndex;
@@ -50,6 +48,7 @@ function sendScore(spreadsheet, name, id, message_id = null) {
                 }
             }
         }
+        */
 
         for (i = 0; i < 7; i++) {
             score[i] = parseFloat(score[i + 4]);
@@ -75,7 +74,7 @@ function sendScore(spreadsheet, name, id, message_id = null) {
                 }
             }
             if (i === 1) {
-                score[i] += "*";
+                //score[i] += "*";
                 while (score[i].length !== 7) {
                     score[i] = score[i] + " ";
                 }
@@ -94,33 +93,29 @@ function sendScore(spreadsheet, name, id, message_id = null) {
         return;
     }
     if (score[0] === "y2022") {
-
-
-
-        if (score[3] === "M3239" || score[3] === "M3238") {
-            const tableScore = spreadsheet.getSheetByName(scoreSheetSecond).getRange("A1:P700").getValues();
-            let score;
-            let nameIndex;
-            const marks = [];
-            if (name.split(" ").length === 2) {
-                nameIndex = 1;
-            } else {
-                nameIndex = 2;
-            }
-            score = extractValue(tableScore, name, nameIndex);
-            if (score === null) {
-                score = extractValue(tableScore, name, nameIndex);
-                if (score === null) {
-                    if (message_id == null) {
-                        sendMessage(id, registrationNotFound);
-                        return;
-                    } else {
-                        sendMessage(id, personNotFound, message_id);
-                        return;
-                    }
-                }
-            }}
-
+        /*if (score[3] === "M3239" || score[3] === "M3238") {
+      const tableScore = spreadsheet.getSheetByName(scoreSheetSecond).getRange("A1:P700").getValues();
+      let score;
+      let nameIndex;
+      const marks = [];
+      if (name.split(" ").length === 2) {
+          nameIndex = 1;
+      } else {
+          nameIndex = 2;
+      }
+      score = extractValue(tableScore, name, nameIndex);
+      if (score === null) {
+          score = extractValue(tableScore, name, nameIndex);
+          if (score === null) {
+              if (message_id == null) {
+                  sendMessage(id, registrationNotFound);
+                  return;
+              } else {
+                  sendMessage(id, personNotFound, message_id);
+                  return;
+              }
+          }
+      }}*/
         for (var i = 0; i <= 8; i++) {
             score[i] = parseFloat(score[i + 4]);
             if (score[i] > 90) {

@@ -2,9 +2,6 @@
 //const webAppUrl declared in privateConst file
 const telegramUrl = "https://api.telegram.org/bot" + token;
 
-//TO remove?
-const subjects = {"матан": 8, "java": 4, "дм": 3, "аисд": 5, "линал": 7, "эвм": 6};
-
 const telegramTag = "@CT_score_bot";
 
 const beginCommand = "/start";
@@ -53,19 +50,16 @@ const registrationNotFound = `
 const shameNotFound = `Не находится в папке позора`;
 
 const registrationsSheet = "bot_registrations"
-const scoreSheet = "score"
-const scoreSheetSecond = "score2"
+const scoreSheet = "score2"
+const scoreSheetSecond = "score"
+
+const studentsSheets = ["y2023", "y2022"]
+const registrationsSheets = ["bot_registrations_y2023", "bot_registrations_y2022"];
 
 const shameSheet = "shame_folder"
 
 const shameCountCell = "F1"
 const registrationsCountCell = "D1"
-
-const personalScoreReplacement = []
-//hard-coded personal replacements
-
-const groupScoreReplacement = []
-//hard-coded personal replacements
 
 const yourScoreKal = `
 ............/´¯/)...............(\\¯\`\\...... ......
